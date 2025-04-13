@@ -3,13 +3,21 @@ import { ShareIcon } from "../icons/ShareIcon";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 
+
 interface CardProps {
   title: string;
-  type: "youtube" | "twitter";
+  type: "youtube" | "twitter" | "document" |"link" ;
   link: string;
+  contentId ?: string;
 }
 
-export const Card = ({ title, type, link }: CardProps) => {
+export const Card = ({ title, type, link, contentId }: CardProps) => {
+  // if(!contentId){
+  //   throw new Error("Card component ContentId is undefined")
+  // }
+  // const deleteCard = DeleteCard(contentId);
+  // console.log(contentId);
+  
   return (
     <div>
       <div className="border border-gray-300/50 p-2 min-w-72 rounded-md bg-white">
@@ -28,14 +36,14 @@ export const Card = ({ title, type, link }: CardProps) => {
               </a>
             </div>
             <div className="text-gray-600 pr-2.5">
-              <DeleteIcon />
+                <DeleteIcon />
             </div>
           </div>
         </div>
         <div className="p-2">
           {type === "youtube" && (
             <iframe
-              className="w-full"
+              className="w-full h-60"
               src={link.replace("watch", "embed").replace("?v=", "/")}
               title="YouTube video player"
               frameBorder="0"

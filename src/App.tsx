@@ -11,6 +11,8 @@ function App() {
         <Route path="/signup" Component={Signup}/>
         <Route path="/signin" Component={Signin}/>
         <Route path="/dashboard" Component={Dashboard}/>
+        <Route path="/share/:shareId" Component={Dashboard}/>
+        {/* todo - add the fontend for get share , implement the delete functionality */}
       </Routes>
     </BrowserRouter>
   

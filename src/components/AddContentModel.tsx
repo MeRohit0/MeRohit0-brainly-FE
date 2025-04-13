@@ -13,7 +13,7 @@ enum ContentType {
 }
 
 // controllable component
-export const AddContentModel = ({ isOpen , onClose }:{ isOpen : boolean , onClose : () => void}) => {
+export const AddContentModel = ({ isOpen , onClose, refresh }:{ isOpen : boolean , onClose : () => void ,  refresh : () => void })  => {
     const [type ,setType] = useState(ContentType.Youtube);
     const titleRef = useRef<HTMLInputElement>(null);
     const linkRef = useRef<HTMLInputElement>(null);
@@ -33,6 +33,8 @@ export const AddContentModel = ({ isOpen , onClose }:{ isOpen : boolean , onClos
             }
         })
         alert("Content added");
+        onClose();
+        refresh();
     }
     return (
     isOpen && <div className="bg-slate-700/50 w-screen h-screen fixed top-0 flex justify-center items-center" onClick={onClose}>
